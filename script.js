@@ -652,8 +652,18 @@ function getRandomQuote() {
 
 function displayQuote() {
     const quote = getRandomQuote();
-    quoteText.textContent = `"${quote.text}"`;
-    quoteAuthor.textContent = `- ${quote.author}`;
+    const quoteBox = document.querySelector('.quote-box');
+    
+    // Add fade out effect
+    quoteBox.style.opacity = '0';
+    
+    setTimeout(() => {
+        quoteText.textContent = `"${quote.text}"`;
+        quoteAuthor.textContent = `- ${quote.author}`;
+        
+        // Add fade in effect
+        quoteBox.style.opacity = '1';
+    }, 300);
 }
 
 // Display initial quote
