@@ -8,13 +8,39 @@
 </head>
 <body>
     <div class="container">
-        <h1>Random Quote Generator</h1>
+        <h1 id="title">Random Quote Generator</h1>
         <div class="quote-box">
-            <p id="quote-te xt">Click the button to get a random quote!</p>
+            <p id="quote-text">Click the button to get a random quote!</p>
             <p id="quote-author"></p>
         </div>
         <button id="new-quote">New Quote</button>
     </div>
+    <script>
+        // UI text translations
+        const translations = {
+            en: {
+                title: "Random Quote Generator",
+                button: "New Quote",
+                initialText: "Click the button to get a random quote!"
+            },
+            zh: {
+                title: "随机名言生成器",
+                button: "新名言",
+                initialText: "点击按钮获取随机名言！"
+            }
+        };
+
+        // Update UI text based on browser language
+        function updateUIText() {
+            const lang = navigator.language.startsWith('zh') ? 'zh' : 'en';
+            document.getElementById('title').textContent = translations[lang].title;
+            document.getElementById('new-quote').textContent = translations[lang].button;
+            document.getElementById('quote-text').textContent = translations[lang].initialText;
+        }
+
+        // Update UI when page loads
+        window.addEventListener('load', updateUIText);
+    </script>
     <script src="script.js"></script>
 </body>
 </html> 
